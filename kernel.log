@@ -1,0 +1,5 @@
+[ 3349.783686] [avm_kernel_logger] module loaded
+[ 3371.233683] Test1
+[ 3372.257964] Test2
+[ 3373.281779] Test3
+[ 3376.549172] [avm_kernel_logger] module removed
