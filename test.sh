@@ -1,12 +1,10 @@
 #!/bin/bash
 
-make install
+sudo insmod avm_kernel_logger.ko
 
-sudo insmod build/avm_kernel_logger.ko
-
-echo "Test1 Test2"  > /proc/avm_kernel_logger
+echo "Test1 Test2 Test3"  > /proc/avm_kernel_logger
 
 sleep 5
 
 sudo rmmod avm_kernel_logger
-sudo dmesg | tail -n 20
+sudo dmesg | tail -n 5

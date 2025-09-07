@@ -1,12 +1,9 @@
 obj-m := avm_kernel_logger.o
 
-# Name des Moduls (ohne .c und .o)
+# Name des Moduls
 MODULE_NAME := avm_kernel_logger
 
-# Unterordner, in dem gebaut werden soll
-BUILD_DIR := build
-
-# Kernel Build-Verzeichnis (läuft automatisch gegen das aktuell laufende Kernel)
+# Kernel Build-Verzeichnis
 KERNEL_DIR := /lib/modules/$(shell uname -r)/build
 
 # Pfad zum aktuellen Verzeichnis
@@ -14,14 +11,10 @@ PWD := $(shell pwd)
 
 # Standardziel
 all:
-	$(MAKE) -C $(KERNEL_DIR) M=$(PWD) MO=$(PWD)/$(BUILD_DIR) modules
+	$(MAKE) -C $(KERNEL_DIR) M=$(PWD) modules
 
 # Aufräumen im Build-Verzeichnis
 clean:
-	$(MAKE) -C $(KERNEL_DIR) M=$(PWD) MO=$(PWD)/$(BUILD_DIR) clean
+	$(MAKE) -C $(KERNEL_DIR) M=$(PWD) clean
 	@rm -rf $(BUILD_DIR)
 
-# Installiert das Modul ins System
-install:
-	sudo cp $(BUILD_DIR)/$(MODULE_NAME).ko /lib/modules/$(shell uname -r)/extra/
-	sudo depmod -a

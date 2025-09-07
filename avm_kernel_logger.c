@@ -94,7 +94,7 @@ static void print_word(struct work_struct *work) {
 
     char *data = pop_from_word_list();
 
-    printk("%s\n", data);
+    pr_info("[avm_kernel_logger] %s\n", data);
     kfree(data);
 }
 
